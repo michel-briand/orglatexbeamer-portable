@@ -1,0 +1,48 @@
+Créer le répertoire
+
+: /var/lib/gitea/custom
+
+Créer le fichier
+
+: /var/lib/gitea/custom/templates/custom/header.tmpl
+
+#+begin_src html
+<link rel="stylesheet" href="{{AppSubUrl}}/assets/css/my-style-markup-heading-fix.css" />
+#+end_src
+
+Créer le fichier
+
+: /var/lib/gitea/custom/public/assets/css/my-style-markup-heading-fix.css
+
+#+begin_src css
+  .markup h1 {
+      padding-top: 1.2em;
+      margin-top:0px;
+      margin-bottom:12px;
+  }
+  .markup h2 {
+      padding-top: 1.2em;
+      margin-top:0px;
+      margin-bottom:12px;
+  }
+  .markup h3 {
+      padding-top: 1.2em;
+      margin-top:0px;
+      margin-bottom:12px;
+  }
+  .markup h4 {
+      padding-top: 1em;
+      margin-top:0px;
+      margin-bottom:12px;
+  }
+  .markup h5 {
+      padding-top: 0.8em;
+      margin-top:0px;
+      margin-bottom:12px;
+  }
+  .markup h6 {
+      padding-top: 0.6em;
+      margin-top:0px;
+      margin-bottom:12px;
+  }
+#+end_src
