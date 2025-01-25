@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+me=${0##*/} # identify this program
+md=${0/$me/} # this program's directory
+echo "me=$me"
+echo "md=$md"
+
+if [ -z "$1" ] ; then
+   echo "argument required: org file"
+   exit 1
+fi
+
+emacs --batch \
+      -l $md/emacs/org-mode_batch_init.el \
+      --visit "$1" \
+      -f org-beamer-export-to-pdf
+
+echo $?

@@ -1,0 +1,17 @@
+#!/bin/sh
+# Export files with Org mode
+#
+
+if [ -z "$1" ] ; then
+   echo "argument required: org file"
+   exit 1
+fi
+
+emacs -Q --batch --eval "
+    (progn
+      (require 'ox-beamer)
+      (load-file \".emacs.d/org-mode_batch_init.el\")
+      (dolist (file command-line-args-left)
+        (with-current-buffer (find-file-noselect file)
+          (org-beamer-export-to-pdf))))
+  " "$@"
