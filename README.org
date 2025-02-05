@@ -1,6 +1,10 @@
 * Portable helper files for Org-mode LaTeX and Beamer
 
+Makefile to export Org file to html or pdf
+
 Emacs configuration
+
+Listings language definitions for Yaml, Ansible, json and conf(ini)
 
 Snippets
 
