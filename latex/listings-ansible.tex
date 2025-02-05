@@ -2,8 +2,8 @@
 %     \PassOptionsToPackage{natural,usenames,svgnames}{xcolor}
 % or like this (org-mode export)
 %     #+LATEX_CLASS_OPTIONS: [...,natural,usenames,svgnames]
-\usepackage{listings}
-\usepackage{xcolor}
+\RequirePackage{listings}
+\RequirePackage{xcolor}
 
 %%
 %% Yaml definition
@@ -92,4 +92,35 @@
          {7}{{{\color{numb}7}}}{1}
          {8}{{{\color{numb}8}}}{1}
          {9}{{{\color{numb}9}}}{1}
+}
+
+%%
+%% Ini/conf definition
+%% 
+%%
+\definecolor{maroon}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\definecolor{darkbrown}{RGB}{139,69,19}
+\definecolor{darkblue}{RGB}{25,25,112}
+\definecolor{mediumgreen}{RGB}{25,125,25}
+
+\lstdefinelanguage{conf}
+{
+  basicstyle=\ttfamily\footnotesize,
+  morecomment=[l]{\#},
+  morecomment=[l]{;},
+  morecomment=[s][\color{darkblue}\bfseries]{[}{]},
+  moredelim=[s][\color{darkbrown}]{=}{\ },
+  commentstyle=\color{darkgreen},
+  morestring=[s][\color{maroon}]{'}{'},
+  morestring=[s][\color{maroon}]{"}{"},
+  literate=*%
+    {=}{{{\color{red}{=}}}}{1},%
+  morekeywords=[1]{
+    inventory,
+    callbacks_enabled,
+    stdout_callback
+  },
+  keywordstyle=\color{mediumgreen}
+  %keywordstyle={\color{maroon}\bfseries}
 }
