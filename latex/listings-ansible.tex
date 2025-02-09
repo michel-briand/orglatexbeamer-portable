@@ -5,23 +5,29 @@
 \RequirePackage{listings}
 \RequirePackage{xcolor}
 
+\definecolor{DefaultColor}{RGB}   {0, 0, 0}
+\definecolor{IdentifierColor}{RGB}{10, 100, 10}
+\definecolor{NumberColor}{RGB}    {5, 171, 2}
+\definecolor{StringColor}{RGB}    {201, 124, 101}
+\definecolor{CommentColor}{RGB}   {139,69,19}
+\definecolor{KeywordColor}{RGB}   {9, 93, 143}
+\definecolor{Keyword2Color}{RGB}  {25,118, 210}
+\definecolor{Keyword3Color}{RGB}  {25,118, 210}
+\definecolor{OperatorColor}{RGB}  {175, 80, 43}
+
+
 %%
 %% Yaml definition
 %% (c) 2025 Michel Briand
 %%
 \lstdefinelanguage{Yaml}{
-  morekeywords={True,False},
+  emph={True,False},
   sensitive=false,
   morecomment=[l]\#,
   morestring=[b]',
   morestring=[b]"
 }
 
-% style
-
-\newcommand\YAMLcolonstyle{\color{red}\mdseries}
-\newcommand\YAMLkeystyle{\color{black}\bfseries}
-\newcommand\YAMLvaluestyle{\color{teal}\mdseries}
 
 %%
 %% Ansible definition
@@ -29,11 +35,12 @@
 %%
 \lstdefinelanguage{Ansible}{
   alsolanguage=Yaml,
-  % backgroundcolor=\color{},
-  commentstyle=\color{DarkGoldenrod},
-  numberstyle=\tiny\color{teal},
-  stringstyle=\color{orange},
-  basicstyle=\ttfamily,
+  moreemph={all},
+  emphstyle=\color{IdentifierColor},
+  commentstyle=\color{CommentColor},
+  numberstyle=\tiny\color{NumberColor},
+  stringstyle=\color{StringColor},
+  basicstyle=\ttfamily\color{DefaultColor},
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
@@ -45,82 +52,84 @@
   showtabs=false,
   tabsize=2,
   % general
-  morekeywords = {hosts,remote_user,tasks},
-  keywordstyle=\color{magenta},
+  morekeywords={
+    hosts,
+    remote_user,
+    gather_facts,
+    tasks
+  },
+  keywordstyle=\color{KeywordColor},
   % name
   morekeywords = [2]{name},
-  keywordstyle = [2]\color{blue},
+  keywordstyle = [2]\color{Keyword2Color},
   % parameters
-  morekeywords = [3]{state},
-  keywordstyle = [3]\color{violet},
-  % :
-  moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:}
+  morekeywords = [3]{debug,state,var},
+  keywordstyle = [3]\color{Keyword3Color},
 }
 
 
 %%
 %% Json definition
 %% https://tex.stackexchange.com/a/433961/209542
-%%
-\definecolor{eclipseStrings}{RGB}{42,0.0,255}
-\definecolor{eclipseKeywords}{RGB}{127,0,85}
-\colorlet{numb}{magenta!60!black}
+%% https://tex.stackexchange.com/questions/83085/how-to-improve-listings-display-of-json-files
+%% TODO: test this
+%% https://tex.stackexchange.com/a/569146/209542
 
 \lstdefinelanguage{json}{
+    % there is no comment in json
     basicstyle=\ttfamily,
-    commentstyle=\color{eclipseStrings}, % style of comment
-    stringstyle=\color{eclipseKeywords}, % style of strings
     numbers=left,
-    numberstyle=\scriptsize,
-    stepnumber=1,
-    numbersep=8pt,
-    showstringspaces=false,
+    numberstyle=\scriptsize\color{NumberColor},
     breaklines=true,
-    %frame=lines,                  %frame around listing
-    %backgroundcolor=\color{gray},
-    string=[s]{"}{"},
-    comment=[l]{:\ "},
-    morecomment=[l]{:"},
+    %frame=lines,
+    %backgroundcolor=\color{gray!10},
+    showstringspaces=false,
+    morestring=[db]{"},
+    stringstyle=\color{StringColor},
+    morestring=[s][\color{KeywordColor}]{\ \ "}{":},
+    keywordstyle=\color{KeywordColor},
+    moreemph={true,false,null},
+    emphstyle=\color{IdentifierColor},
     literate=
-        *{0}{{{\color{numb}0}}}{1}
-         {1}{{{\color{numb}1}}}{1}
-         {2}{{{\color{numb}2}}}{1}
-         {3}{{{\color{numb}3}}}{1}
-         {4}{{{\color{numb}4}}}{1}
-         {5}{{{\color{numb}5}}}{1}
-         {6}{{{\color{numb}6}}}{1}
-         {7}{{{\color{numb}7}}}{1}
-         {8}{{{\color{numb}8}}}{1}
-         {9}{{{\color{numb}9}}}{1}
+     *{0}{{{\color{NumberColor}0}}}{1}
+      {1}{{{\color{NumberColor}1}}}{1}
+      {2}{{{\color{NumberColor}2}}}{1}
+      {3}{{{\color{NumberColor}3}}}{1}
+      {4}{{{\color{NumberColor}4}}}{1}
+      {5}{{{\color{NumberColor}5}}}{1}
+      {6}{{{\color{NumberColor}6}}}{1}
+      {7}{{{\color{NumberColor}7}}}{1}
+      {8}{{{\color{NumberColor}8}}}{1}
+      {9}{{{\color{NumberColor}9}}}{1}
+      {.}{{{\color{red}.}}}{1}
+      {:}{{{\color{gray}{:}}}}{1}
+      {,}{{{\color{gray}{,}}}}{1}
+      {\{}{{{\color{gray}{\{}}}}{1}
+      {\}}{{{\color{gray}{\}}}}}{1}
+      {[}{{{\color{gray}{[}}}}{1}
+      {]}{{{\color{gray}{]}}}}{1},
 }
 
 %%
 %% Ini/conf definition
 %% 
 %%
-\definecolor{maroon}{rgb}{0.5,0,0}
-\definecolor{darkgreen}{rgb}{0,0.5,0}
-\definecolor{darkbrown}{RGB}{139,69,19}
-\definecolor{darkblue}{RGB}{25,25,112}
-\definecolor{mediumgreen}{RGB}{25,125,25}
 
 \lstdefinelanguage{conf}
 {
   basicstyle=\ttfamily\footnotesize,
   morecomment=[l]{\#},
   morecomment=[l]{;},
-  morecomment=[s][\color{darkblue}\bfseries]{[}{]},
-  moredelim=[s][\color{darkbrown}]{=}{\ },
-  commentstyle=\color{darkgreen},
-  morestring=[s][\color{maroon}]{'}{'},
-  morestring=[s][\color{maroon}]{"}{"},
+  commentstyle=\color{CommentColor},
+  morestring=[b]',
+  morestring=[b]",
+  stringstyle=\color{StringColor},
   literate=*%
-    {=}{{{\color{red}{=}}}}{1},%
+    {=}{{{\color{OperatorColor}{=}}}}{1},%
   morekeywords=[1]{
     inventory,
     callbacks_enabled,
     stdout_callback
   },
-  keywordstyle=\color{mediumgreen}
-  %keywordstyle={\color{maroon}\bfseries}
+  keywordstyle=[1]\color{KeywordColor}
 }
