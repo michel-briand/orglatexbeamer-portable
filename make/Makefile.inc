@@ -1,3 +1,5 @@
+# -*- mode: makefile-gmake; -*-
+
 B_TEX=$(patsubst %.org,%.tex,$(B_ORG))
 B_PDF=$(patsubst %.org,%.pdf,$(B_ORG))
 

@@ -10,9 +10,10 @@
 \definecolor{NumberColor}{RGB}    {5, 171, 2}
 \definecolor{StringColor}{RGB}    {201, 124, 101}
 \definecolor{CommentColor}{RGB}   {139,69,19}
-\definecolor{KeywordColor}{RGB}   {9, 93, 143}
-\definecolor{Keyword2Color}{RGB}  {25,118, 210}
-\definecolor{Keyword3Color}{RGB}  {25,118, 210}
+\definecolor{KeywordColor}{RGB}   {122, 17, 182}
+\definecolor{Keyword2Color}{RGB}  {239, 127, 75}
+\definecolor{Keyword3Color}{RGB}  {25, 118, 210}
+\definecolor{Keyword4Color}{RGB}  {11, 186, 44}
 \definecolor{OperatorColor}{RGB}  {175, 80, 43}
 
 
@@ -59,12 +60,15 @@
     tasks
   },
   keywordstyle=\color{KeywordColor},
-  % name
-  morekeywords = [2]{name},
+  % important keywords for control
+  morekeywords = [2]{become,when,loop,with_items,register},
   keywordstyle = [2]\color{Keyword2Color},
   % parameters
-  morekeywords = [3]{debug,state,var},
+  morekeywords = [3]{debug,state,var,package,service},
   keywordstyle = [3]\color{Keyword3Color},
+  % name
+  morekeywords = [4]{name},
+  keywordstyle = [4]\color{Keyword4Color},
 }
 
 
