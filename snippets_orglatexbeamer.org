@@ -1,0 +1,31 @@
+deux colonnes
+
+blocs sur une même diapositive
+
+Ligne h
+#+BEAMER: \rule{\textwidth}{1pt}
+
+Terminer un bloc beamer:
+**** 
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+
+* En-tête Org-Mode
+
+** Nom de la table des matières
+
+*** batch
+
+(setq org-beamer-outline-frame-title "Plan")
+
+*** babel
+
+# Custom table of contents names
+#+latex_header: \renewcommand{\frenchcontentsname}{Plan}
+
+** Contrôle diapositive
+
+# Si besoin de couper une "frame" en plusieurs (aussi si toc trop grosse)
+#+BIND: org-beamer-frame-default-options "allowframebreaks"
+
