@@ -37,3 +37,6 @@ B_ORG=
 
 include .make/Makefile.inc
 EOF
+
+echo "Copying template files..."
+cp $dir/org.css .
