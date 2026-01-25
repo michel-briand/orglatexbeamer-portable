@@ -21,6 +21,7 @@ ln -sf $dir/make .make
 touch Makefile
 
 echo "Creating standard Makefile..."
+# BUG: ajouter n'est pas bon!
 cat >> Makefile << "EOF" # quote delimiter to avoid expansion, cmd subst, ...
 default: all
 
@@ -40,3 +41,15 @@ EOF
 
 echo "Copying template files..."
 cp $dir/org.css .
+
+if [ ! -d .git ] ; then
+    echo "Create a git repository ?"
+    read -p "confirm [Y/n] ?" reply
+    case $reply in
+        Y|y) git init ;;
+        *) ;;
+    esac
+fi
+
+echo "Copying .gitignore..."
+cp $dir/git-ignore .gitignore
