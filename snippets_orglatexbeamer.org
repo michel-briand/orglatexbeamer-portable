@@ -1,17 +1,125 @@
-deux colonnes
+# -*- mode: org; -*-
+#+TITLE: titre
+#+AUTHOR: Michel Briand
+#+EMAIL: michel@
+#+LATEX_HEADER: \subtitle{Ideas}
+#+LATEX_HEADER: \institute{Organisation}
+#+LATEX_HEADER: \usepackage{xurl}
+#+DATE: {{{time(%Y-%m-%d)}}}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+#+DATE: {{{time(%d-%m-%Y %H:%M)}}}
 
-blocs sur une même diapositive
 
-Ligne h
+# -*- mode: org; -*-
+#+TITLE: Formation Ansible
+#+AUTHOR: Michel Briand, Rachid El Abouti
+#+EMAIL: michelbriand@free.fr
+#+LATEX_HEADER: \subtitle{Workshop du 12 au 14 février 2025}
+#+LATEX_HEADER: \institute{Some institute}
+
+#+DATE: Dernière édition : \today
+#+DESCRIPTION: Atelier de formation Ansible et industrialisation
+#+KEYWORDS: ansible industrialisation
+#+LANGUAGE: fr
+#+OPTIONS: H:2
+#+BEAMER_THEME: Warsaw
+#+BEAMER_COLOR_THEME: crane
+
+
+# -*- mode: org; -*-
+# First, M-x load-file .emacs.d/org-mode_ansible-listings.el
+# To create a beamer presentation pdf, use M-x org-beamer-export-to-pdf
+#
+#+TITLE: Formation Ansible - Jour 1, mâtinée
+#+AUTHOR: Michel Briand, Rachid El Abouti
+#+EMAIL: michelbriand@free.fr
+#+LATEX_HEADER: \subtitle{Workshop du 12 au 14 février 2025}
+#+DATE: Dernière édition : \today
+#+DESCRIPTION: Atelier de formation Ansible et industrialisation
+#+KEYWORDS: ansible industrialisation
+#+LANGUAGE: fr
+#+BEAMER_THEME: Warsaw
+#+BEAMER_COLOR_THEME: crane
+#
+# Custom Ansible language definition:
+#+latex_header: \input{.latex/listings-ansible.tex}
+#
+# headline -> frame (BEAMER_FRAME_LEVEL)
+#+OPTIONS: H:3
+# Custom table of contents names
+#+latex_header: \renewcommand{\frenchcontentsname}{Plan}
+# Custom toc at each section
+#+latex_header: \AtBeginSubsection[]{\begin{frame}<beamer>\frametitle{\frenchcontentsname\ de la section}\tableofcontents[currentsubsection]\end{frame}}
+#
+# Custom color box
+#+LaTeX: \setbeamercolor{cbrose}{bg=magenta,fg=white}
+
+Notes à la fin :
+
+#+LATEX_HEADER: \usepackage{endnotes}
+#+LATEX_HEADER: \renewcommand{\footnote}{\endnote}
+
+ça ne marche pas pour moi
+
+voir cette question :
+https://emacs.stackexchange.com/questions/72127/org-mode-footnotes-both-at-the-end-of-the-page-and-a-listing-of-all-footnotes-at
+
+#+LATEX_HEADER: \usepackage{endnotes}
+#+LATEX_HEADER: \let\ofootnote=\footnote
+#+LATEX_HEADER: \renewcommand{\footnote}[1]{\ofootnote{#1}\endnote{#1}}
+
+
+deux colonnes?
+
+blocs sur une même diapositive?
+
+Ligne h?
 #+BEAMER: \rule{\textwidth}{1pt}
 
-Terminer un bloc beamer:
-**** 
-:PROPERTIES:
-:BEAMER_env: ignoreheading
-:END:
+Pour chaque snippet, prévoir un mode "batch".
+Prevoir aussi une barre d'outils avec des "snippets" d'utilisation
+courante.
 
-* En-tête Org-Mode
+Pour obtenir de l'aide sur les symboles gérés par Org-Mode, taper :
+org-entities-help
+
+* Pour un export LaTeX
+
+** Polices
+
+On veut de belles polices par défaut. Qui prennent en charge les
+caractères UTF-8. Et qui permettent les symboles mathématiques et les
+émoticones.
+
+** Langue du document
+
+#+LANGUAGE: fr
+
+** La date du document
+
+fixe
+#+DATE: 2026-01-18
+
+dynamique
+date de l'export
+#+DATE: {{{time(%Y-%m-%d)}}}
+date de modification du fichier
+#+DATE: {{{modification-time(%Y-%m-%d)}}}
+date de modification du fichier dans git
+#+DATE: {{{modification-time(%Y-%m-%d,t)}}}
+
+
+** Pas d'indentation de première ligne
+
+\setlength\parindent{0pt}
+
+
+** hypersetup
+
+Lien : ne pas les entourer de rouge
+#+LaTeX_HEADER: \usepackage[x11names]{xcolor}
+#+LaTeX_HEADER: \hypersetup{linktoc = all, colorlinks = true, urlcolor = DodgerBlue4, citecolor = PaleGreen1, linkcolor = black}
+
 
 ** Nom de la table des matières
 
@@ -24,8 +132,52 @@ Terminer un bloc beamer:
 # Custom table of contents names
 #+latex_header: \renewcommand{\frenchcontentsname}{Plan}
 
+
+** Si des liens/url sont très longs, les formatter avec un retour à la ligne
+
+#+LATEX_HEADER: \usepackage{xurl}
+
+** De belles tables
+
+en-tête : 
+# table avec cellule sur plusieurs lignes
+#+LATEX_HEADER: \usepackage{tabularx}
+#+LATEX_HEADER: \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}} % régler la mise à l'échelle des tableaux
+# permet d'avoir plus d'espace entre le contenu de la cellule et les bords
+#+LATEX_HEADER: \usepackage{cellspace}
+#+LATEX_HEADER: \setlength{\cellspacetoplimit}{6pt}
+#+LATEX_HEADER: \setlength{\cellspacebottomlimit}{6pt}
+
+juste avant la table :
+
+(la largeur de la colonne marquée par X dans le paramètre align est
+ajustée en fonction de la taille de la table, et son contenu peut être
+écrit sur plusieurs lignes)
+
+#+LATEX: \ra{0.8} \small
+#+ATTR_LATEX: :environment tabularx :align Sl Sl Sl Sl X :placement [h] :center t :width \textwidth
+insérer la table ici
+
+
+* Pour un export Beamer
+
 ** Contrôle diapositive
 
 # Si besoin de couper une "frame" en plusieurs (aussi si toc trop grosse)
 #+BIND: org-beamer-frame-default-options "allowframebreaks"
 
+** Terminer un bloc beamer:
+
+**** 
+:PROPERTIES:
+:BEAMER_env: ignoreheading
+:END:
+
+* Pour un export HTML
+
+** Le stylesheet
+
+On peut utiliser le style fournit ici (=org.css=), ou un site
+proposant des styles simples (=https://simplecss.org/demo=).
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
