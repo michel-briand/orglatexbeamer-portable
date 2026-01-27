@@ -181,3 +181,19 @@ On peut utiliser le style fournit ici (=org.css=), ou un site
 proposant des styles simples (=https://simplecss.org/demo=).
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org.css"/>
+
+
+* Emacs en mode batch
+
+Lancer Emacs avec une commande complexe sous forme de fonction Lisp :
+
+#+begin_src bash
+emacs -Q --batch --eval "
+    (progn
+      (require 'ox-beamer)
+      (load-file \".emacs.d/org-mode_batch_init.el\")
+      (dolist (file command-line-args-left)
+        (with-current-buffer (find-file-noselect file)
+          (org-beamer-export-to-pdf))))
+  " "$@"
+#+end_src
