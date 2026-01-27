@@ -1,4 +1,5 @@
 (package-initialize)
+(require 'ox-latex)
 (require 'ox-beamer)
 (setq org-latex-compiler "xelatex")
 ;  '("xelatex -interaction nonstopmode %f"
