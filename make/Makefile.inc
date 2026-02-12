@@ -2,8 +2,8 @@
 
 D_ORG_TO_ALL ?= $(D_ORG)
 
-d_org_to_pdf=$(D_ORG_TO_PDF) $(D_ORG_TO_ALL)
-d_org_to_html=$(D_ORG_TO_HTML) $(D_ORG_TO_ALL)
+d_org_to_pdf := $(D_ORG_TO_PDF) $(D_ORG_TO_ALL)
+d_org_to_html := $(D_ORG_TO_HTML) $(D_ORG_TO_ALL)
 
 d_org_to_beamer_pdf=
 d_org_to_beamer_html=
@@ -22,9 +22,16 @@ B_PDF := $(if $(B_PDF),$(B_PDF),$(patsubst %.tex,%.pdf,$(b_tex)))
 
 # Afficher les cibles
 printtex:
-	@echo $(b_tex) $(d_tex)
+	@echo "tex files: $(d_tex)"
+	@echo "beamer tex files: $(b_tex)"
 print:
-	@echo $(D_PDF) $(D_HTM) $(B_PDF)
+	@echo "org to pdf explicit targets: $(D_ORG_TO_PDF)"
+	@echo "org to html explicit targets: $(D_ORG_TO_HTML)"
+	@echo "intermediate targets from org to html: $(D_i_HTM)"
+	@echo "pdf targets: $(D_PDF)"
+	@echo "html targets: $(D_HTM)"
+	@echo "beamer targets: $(B_PDF)"
+
 
 define org_article_to_pdf
 	emacs --batch \
