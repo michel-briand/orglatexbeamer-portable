@@ -1,3 +1,7 @@
+* template de base
+
+** article
+
 # -*- mode: org; -*-
 #+TITLE: titre
 #+AUTHOR: Michel Briand
@@ -10,13 +14,14 @@
 #+DATE: {{{time(%d-%m-%Y %H:%M)}}}
 
 
+** beamer
+
 # -*- mode: org; -*-
 #+TITLE: Formation Ansible
 #+AUTHOR: Michel Briand, Rachid El Abouti
 #+EMAIL: michelbriand@free.fr
 #+LATEX_HEADER: \subtitle{Workshop du 12 au 14 février 2025}
 #+LATEX_HEADER: \institute{Some institute}
-
 #+DATE: Dernière édition : \today
 #+DESCRIPTION: Atelier de formation Ansible et industrialisation
 #+KEYWORDS: ansible industrialisation
@@ -25,36 +30,27 @@
 #+BEAMER_THEME: Warsaw
 #+BEAMER_COLOR_THEME: crane
 
+*** Option niveau des diapositives :
 
-# -*- mode: org; -*-
-# First, M-x load-file .emacs.d/org-mode_ansible-listings.el
-# To create a beamer presentation pdf, use M-x org-beamer-export-to-pdf
-#
-#+TITLE: Formation Ansible - Jour 1, mâtinée
-#+AUTHOR: Michel Briand, Rachid El Abouti
-#+EMAIL: michelbriand@free.fr
-#+LATEX_HEADER: \subtitle{Workshop du 12 au 14 février 2025}
-#+DATE: Dernière édition : \today
-#+DESCRIPTION: Atelier de formation Ansible et industrialisation
-#+KEYWORDS: ansible industrialisation
-#+LANGUAGE: fr
-#+BEAMER_THEME: Warsaw
-#+BEAMER_COLOR_THEME: crane
-#
-# Custom Ansible language definition:
-#+latex_header: \input{.latex/listings-ansible.tex}
-#
 # headline -> frame (BEAMER_FRAME_LEVEL)
 #+OPTIONS: H:3
+
+*** Nom de la table des matières
+
 # Custom table of contents names
 #+latex_header: \renewcommand{\frenchcontentsname}{Plan}
+
+*** présenter la table des matières à chaque section
+
 # Custom toc at each section
 #+latex_header: \AtBeginSubsection[]{\begin{frame}<beamer>\frametitle{\frenchcontentsname\ de la section}\tableofcontents[currentsubsection]\end{frame}}
-#
+
+*** boîte de couleur
+
 # Custom color box
 #+LaTeX: \setbeamercolor{cbrose}{bg=magenta,fg=white}
 
-Notes à la fin :
+*** Notes à la fin :
 
 #+LATEX_HEADER: \usepackage{endnotes}
 #+LATEX_HEADER: \renewcommand{\footnote}{\endnote}
@@ -68,6 +64,7 @@ https://emacs.stackexchange.com/questions/72127/org-mode-footnotes-both-at-the-e
 #+LATEX_HEADER: \let\ofootnote=\footnote
 #+LATEX_HEADER: \renewcommand{\footnote}[1]{\ofootnote{#1}\endnote{#1}}
 
+*** AUTRES
 
 deux colonnes?
 
@@ -111,7 +108,7 @@ date de modification du fichier dans git
 
 ** Pas d'indentation de première ligne
 
-\setlength\parindent{0pt}
+#+LATEX_HEADER: \setlength\parindent{0pt}
 
 
 ** hypersetup
@@ -157,6 +154,12 @@ ajustée en fonction de la taille de la table, et son contenu peut être
 #+LATEX: \ra{0.8} \small
 #+ATTR_LATEX: :environment tabularx :align Sl Sl Sl Sl X :placement [h] :center t :width \textwidth
 insérer la table ici
+
+
+** listings ansible
+
+# Custom Ansible language definition:
+#+latex_header: \input{.latex/listings-ansible.tex}
 
 
 * Pour un export Beamer
