@@ -2801,6 +2801,7 @@ p.verse {
 }
 
 .org-src-container {
+	background-color: #eee;
 	border: 1px solid #ccc;
 	box-shadow: 3px 3px 3px #eee;
 	font-family: Lucida Console, monospace;
