@@ -1,5 +1,7 @@
 # -*- mode: makefile-gmake; -*-
 
+D_ORG_TO_ALL ?= $(D_ORG)
+
 d_org_to_pdf=$(D_ORG_TO_PDF) $(D_ORG_TO_ALL)
 d_org_to_html=$(D_ORG_TO_HTML) $(D_ORG_TO_ALL)
 
