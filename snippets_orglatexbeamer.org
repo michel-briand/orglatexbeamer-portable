@@ -200,3 +200,15 @@ emacs -Q --batch --eval "
           (org-beamer-export-to-pdf))))
   " "$@"
 #+end_src
+
+** graphiques
+
+*** inclure SVG
+
+inkscape va être appelé par (xe)latex pour transformer
+le SVG en PDF. Dans ce cas, il est nécessaire d'invoquer
+(xe)latex avec l'option --shell-escape :
+
+#+begin_src emacs-lisp
+  (setq org-latex-pdf-process '("latexmk -f -pdfxe -%latex=\"%latex --shell-escape\" -interaction=nonstopmode -output-directory=%o %f"))
+#+end_src

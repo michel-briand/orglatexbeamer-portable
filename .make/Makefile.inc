@@ -35,24 +35,24 @@ print:
 
 define org_article_to_pdf
 	emacs --batch \
-		-l .emacs.d/org-mode_batch_init.el \
-		-l .emacs.d/org-mode_ansible-listings.el \
+		-l $(TOP)/.emacs.d/org-mode_batch_init.el \
+		-l $(TOP)/.emacs.d/org-mode_ansible-listings.el \
 		--visit $< \
 		-f org-latex-export-to-pdf
 endef
 
 define org_article_to_html
 	emacs --batch \
-		-l .emacs.d/org-mode_batch_init.el \
-		-l .emacs.d/org-mode_ansible-listings.el \
+		-l $(TOP)/.emacs.d/org-mode_batch_init.el \
+		-l $(TOP)/.emacs.d/org-mode_ansible-listings.el \
 		--visit $< \
 		-f org-html-export-to-html
 endef
 
 define org_beamer_to_pdf
 	emacs --batch \
-		-l .emacs.d/org-mode_batch_init.el \
-		-l .emacs.d/org-mode_ansible-listings.el \
+		-l $(TOP)/.emacs.d/org-mode_batch_init.el \
+		-l $(TOP)/.emacs.d/org-mode_ansible-listings.el \
 		--visit $< \
 		-f org-beamer-export-to-pdf
 endef
