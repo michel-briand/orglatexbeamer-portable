@@ -212,3 +212,10 @@ le SVG en PDF. Dans ce cas, il est nécessaire d'invoquer
 #+begin_src emacs-lisp
   (setq org-latex-pdf-process '("latexmk -f -pdfxe -%latex=\"%latex --shell-escape\" -interaction=nonstopmode -output-directory=%o %f"))
 #+end_src
+
+
+*** plusieurs colonnes
+
+#+LATEX_HEADER: \usepackage{multicol}
+#+LATEX_CLASS_OPTIONS: [twocolumn]
+
