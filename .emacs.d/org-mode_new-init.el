@@ -25,7 +25,7 @@
    (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out"
            "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk"
            "blg" "brf" "fls" "entoc" "ps" "spl" "bbl"
-           "tex" "bcf")))
+           "tex" "bcf" "xdv")))
 
   ;; PDF metadata
   (org-latex-hyperref-template
