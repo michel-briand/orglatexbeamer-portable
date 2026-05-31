@@ -66,19 +66,15 @@ https://emacs.stackexchange.com/questions/72127/org-mode-footnotes-both-at-the-e
 
 *** AUTRES
 
-deux colonnes?
+Plusieurs blocs sur une même diapositive :
+voir formation
 
-blocs sur une même diapositive?
-
-Ligne h?
+Ligne horizontale :
 #+BEAMER: \rule{\textwidth}{1pt}
-
-Pour chaque snippet, prévoir un mode "batch".
-Prevoir aussi une barre d'outils avec des "snippets" d'utilisation
-courante.
 
 Pour obtenir de l'aide sur les symboles gérés par Org-Mode, taper :
 org-entities-help
+
 
 * Pour un export LaTeX
 
@@ -100,6 +96,8 @@ fixe
 dynamique
 date de l'export
 #+DATE: {{{time(%Y-%m-%d)}}}
+date et heure de l'export
+#+DATE: {{{time(%d-%m-%Y %H:%M)}}}
 date de modification du fichier
 #+DATE: {{{modification-time(%Y-%m-%d)}}}
 date de modification du fichier dans git

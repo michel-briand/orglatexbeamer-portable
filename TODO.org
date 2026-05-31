@@ -1,0 +1,116 @@
+* Idées plus récentes
+
+emacs intéractif : 
+ - Raccourcis / automatisation : eev, eepitch
+emacs batch :
+ - répertoire spécifique pour emacs : =--init-directory=
+ - compilation en code natif (ELF) : =(native-compile-async package-user-dir t)=
+   - meilleur : =batch-native-compile=
+ - lancer emacs comme ceci :
+
+: emacs --batch --no-init-file --no-site-file --init-directory $TOP/.emacs.d -l $TOP/.emacs.d/emacs_install.el=
+
+fabrication :
+ - just 
+pipeline :
+ - image docker
+ - 2 langages : github/gitea et gitlab
+
+* Tâches d'implémentation
+
+*** TODO DATE mal formattée en PDF
+exemple PrestationService.pdf
+
+on a ceci dans l'en-tête org:
+#+DATE: {{{time(%d-%m-%Y %H:%M)}}}
+
+la date est correcte (mais écrite sans espace)
+l'heure est incorrecte avec un espace avant le :
+
+*** TODO DATE non présente en HTML
+date non présente au début du document
+mais présente à la fin via le postambule
+
+exemple PrestationService.html
+
+on a ceci dans l'en-tête org:
+#+DATE: {{{time(%d-%m-%Y %H:%M)}}}
+
+
+** TODO Fusionner atelier_sciences et orglatexbeamer-portable
+
+et squash les commits !
+
+** scripts
+
+*** DONE add stylesheet in template for html generation
+org.css ajouté
+
+*** TODO colorisation syntaxique export Latex et Html
+
+*** TODO police pour emoticones
+
+
+*** TODO les liens symboliques c'est pas la bonne solution
+git submodule?
+ou git-subrepo?
+install : copy ou synchro git
+
+*** gitea: mirroir Actions pour éviter cnx internet
+Avec DEFAULT_ACTIONS_URL
+
+*** gitea: images conteneurs en local
+ [[https://docs.gitea.com/usage/packages/container][Gitea Container Registry]]
+
+*** créer un fichier de log même en mode batch
+
+
+
+** Latex
+
+*** Langue
+
+#+LANGUAGE: fr
+
+**** TODO français : guillemets
+
+
+*** tableaux "pro", "haute-qualité"
+tabularx + cellspace => très bien
+
+*** TODO tableau: réduire la taille des caractères + sans serif
+
+* Fonctions de gestion des notes, projets - Partage
+
+** fonctions accessibles depuis le Shell
+
+Pour être lancé localement ou dans un conteneur de fabrication
+  - défini ici dans le projet "fabrication" : c'est mieux que orglatexbeamer-portable !
+  - copié/màj dans le conteneur créé/géré par le projet atelier_sciences
+Réunir les 2 projets (atelier_sciences et fabrication) ?
+
+** Fonctions accessibles depuis Emacs
+
+L'utilisateur n'a pas besoin de trouver / imaginer un nom de fichier,
+ni un nom de répertoire : le script créé des noms temporaires et
+l'utilisateur peut commencer à rédiger immédiatement.
+
+Le répertoire et le fichier nouvellement créés sont ajoutés à l'index
+des documents en cours (brouillons).
+
+Une fonction simple permet de les renommer et de les déplacer.
+ - option : nouveau projet (git)
+
+Actions disponibles :
+
+  - créer une note dans un espace brouillon
+    - on se base sur l'arbo gitea ?
+  - créer un projet qui réunit des notes (classeur)
+  - déplacer une note
+    - de l'espace brouillon vers un projet
+    - d'un projet vers un autre projet
+  - relire ses notes pour réviser : ouvrir un classeur et lire les notes
+    - pouvoir modifier les notes
+  - partager ses notes avec d'autres étudiants, des profs, sur le web
+
+
