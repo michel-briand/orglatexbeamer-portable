@@ -100,6 +100,10 @@
         (python . t)
         ))
 
+;; si python n'est pas trouvé
+;; TODO: bug possible parce que seul python3-minimal est installé dans l'image
+(require 'ob-python)
+
 ;; pas de confirmation à l'évaluation
 (setq org-confirm-babel-evaluate nil)
 
