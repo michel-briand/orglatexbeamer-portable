@@ -8,7 +8,7 @@ emacs batch :
    - meilleur : =batch-native-compile=
  - lancer emacs comme ceci :
 
-: emacs --batch --no-init-file --no-site-file --init-directory $TOP/.emacs.d -l $TOP/.emacs.d/emacs_install.el=
+: emacs --batch --no-init-file --no-site-file --init-directory $TOP/.emacs.d -l $TOP/.emacs.d/emacs_install.el
 
 fabrication :
  - just 
@@ -16,9 +16,45 @@ pipeline :
  - image docker
  - 2 langages : github/gitea et gitlab
 
+
 * Tâches d'implémentation
 
-*** TODO DATE mal formattée en PDF
+*** TODO si auteur n'est pas défini => logname (root)
+
+si je fabrique le pdf dans le conteneur sans avoir défini
+auteur alors c'est la chaine root qui est utilisée
+
+root dans le conteneur
+
+variable Git à injecter ? DEFAULT_AUTHOR
+
+
+*** TODO svg
+
+vide dans le conteneur
+
+*** TODO babel python
+
+: error ("No org-babel-execute function for python!")
+
+
+*** TODO taille SVG
+
+le SVG stipule une taille de 19x19mm
+
+en export PDF ça fait 453x464px !
+
+en export HTML ça fait 72x74px !
+
+
+*** TODO la date en export HTML
+
+elle est présente en export PDF
+
+elle manque si #+DATE: n'est pas spécifié
+
+
+**** TODO DATE mal formattée en PDF
 exemple PrestationService.pdf
 
 on a ceci dans l'en-tête org:
@@ -27,7 +63,8 @@ on a ceci dans l'en-tête org:
 la date est correcte (mais écrite sans espace)
 l'heure est incorrecte avec un espace avant le :
 
-*** TODO DATE non présente en HTML
+**** TODO DATE non présente en HTML
+
 date non présente au début du document
 mais présente à la fin via le postambule
 
