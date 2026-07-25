@@ -1,5 +1,28 @@
 * Idées plus récentes
 
+** NEXT STEP
+
+récup que les fichiers essentiels de atelier et orglatexbeamer
+créer un nouveau dépot
+
+notion de projet type : ce dépot sera cloné
+il n'a rien en lui sauf le canevas de base
+que des submodules
+ainsi lorsque on pull on ne modifie pas le travail de l'étudiant/chercheur mais
+on met à jour le canevas et les submodules
+
+on check in les produits: pdf / html / css
+
+pour la fabrication de l'image et le setup podman/systemd on créé un autre dépot
+c'est pour le serveur
+
+l'étudiant/le chercheur : a un site web gitea et un dépot local
+- serveur web : visu, prod doc (calculs) et partage
+- dépot local : travail, xp, calcul, prod doc
+
+
+* OLD
+
 emacs intéractif : 
  - Raccourcis / automatisation : eev, eepitch
 emacs batch :
